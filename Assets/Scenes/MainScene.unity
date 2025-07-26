@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 12632759}
   - component: {fileID: 12632761}
   - component: {fileID: 12632760}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 143078534}
   - component: {fileID: 143078536}
   - component: {fileID: 143078535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124252,7 +124252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 248808018}
   - component: {fileID: 248808019}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124269,7 +124269,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 143078534}
@@ -124301,7 +124301,7 @@ GameObject:
   - component: {fileID: 285424953}
   - component: {fileID: 285424955}
   - component: {fileID: 285424954}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ForeDesign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125379,7 +125379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1620995113}
   - component: {fileID: 1620995112}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gruond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125427,7 +125427,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -125435,7 +125435,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1620995113
@@ -125446,9 +125446,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620995111}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.24, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.52999973, y: -0.109999895, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 248808018}
@@ -125465,7 +125465,7 @@ GameObject:
   - component: {fileID: 1675565096}
   - component: {fileID: 1675565098}
   - component: {fileID: 1675565097}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BackDesign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125928,10 +125928,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c60b1d07835fd449fd59615c6423a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  jumpForce: 5
-  transform: {fileID: 0}
-  groundCheck: {fileID: 0}
+  moveSpeed: 2
+  jumpForce: 2
+  transform: {fileID: 561433200}
+  groundCheck: {fileID: 1758987136}
   groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
@@ -125942,6 +125942,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1991794269}
-  - {fileID: 1620995113}
   - {fileID: 1316742444}
   - {fileID: 1838198013}
+  - {fileID: 1620995113}

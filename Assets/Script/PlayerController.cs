@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
+
+
+    //움직임 제어 변수
     public float moveSpeed = 4f;
     public float jumpForce = 5f;
 
@@ -17,10 +20,18 @@ public class PlayerController : MonoBehaviour
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
 
+
+    private Animator animator;
+    
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
+        transform = transform.GetComponent<Transform>();
     }
 
     // Update is called once per frame
