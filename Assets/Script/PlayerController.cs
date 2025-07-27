@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidbody;
 
     public Transform transform;
+    public Transform spriteObject;
     private bool isGrounded = false;
 
     public Transform groundCheck;
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         transform = transform.GetComponent<Transform>();
+
+        
     }
 
     // Update is called once per frame
@@ -55,7 +58,10 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             moveY = -1f;
 
-            rigidbody.velocity = new Vector2(moveX * moveSpeed, moveY *moveSpeed);
+        rigidbody.velocity = new Vector2(moveX * moveSpeed, moveY *moveSpeed);
+        HandleAnimation(moveX,moveY);
+
+
 
     }
     void Jump()
@@ -66,11 +72,27 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
         }
+
     }
     void OnDrawGizmosSelected()
     {
         if (groundCheck == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    }
+
+    void HandleAnimation(float moveX, float moveY)
+    {
+        float speed = new Vector2(moveX, moveY).magnitude;
+        animator.SetFloat("SpeedFloat", speed);
+        
+    }
+    public void PlayJumpAnimation()
+    {
+        animator.SetTrigger("Jump");
+    }
+    public void PlayerAttackAnimation()
+    {
+        animator.SetTrigger("Attack");
     }
 }
