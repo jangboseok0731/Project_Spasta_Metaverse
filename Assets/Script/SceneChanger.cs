@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameObject : MonoBehaviour
+public class SceneChanger : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,10 +15,4 @@ public class MiniGameObject : MonoBehaviour
     {
         
     }
-
-
-
-
-
-    
 }
