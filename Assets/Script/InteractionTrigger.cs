@@ -15,6 +15,7 @@ public class InteractionTrigger : MonoBehaviour
         if (Input.GetKey(KeyCode.F))
         {
             Debug.Log("에헤이 왜그래 나한테");
+            PlayerPrefs.SetString("MainScene",SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("MiniGame_FlapyBirdScene");
         }
 

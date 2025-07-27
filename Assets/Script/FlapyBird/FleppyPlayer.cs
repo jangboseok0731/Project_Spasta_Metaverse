@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class Player : MonoBehaviour
 
     public bool godMode = false;
 
-    GameManager_FlappyBird gameManager = null;
+    GameManager_FlappyBird gameManager;
+    SceneManager SceneManager;
 
     void Start()
     {
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Not Founded Rigidbody");
         }
+        gameManager = GameManager_FlappyBird.Instance;
     }
 
     void Update()
@@ -40,10 +43,15 @@ public class Player : MonoBehaviour
         {
             if (deathCooldown <= 0)
             {
+                string prevScene = PlayerPrefs.GetString("MainScene", "");
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
                 {
                     // 게임 재시작
                     gameManager.RestartGame();
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    SceneManager.LoadScene("MainScene");
                 }
             }
             else
@@ -91,6 +99,7 @@ public class Player : MonoBehaviour
         animator.SetInteger("IsDie", 1);
         isDead = true;
         deathCooldown = 1f;
+        Debug.Log(GameManager_FlappyBird.Instance == null ? "GameManager is null!" : "GameManager OK!");
         gameManager.GameOver();
     }
 }
