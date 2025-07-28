@@ -18,6 +18,10 @@ public class InteractionTrigger : MonoBehaviour
             PlayerPrefs.SetString("MainScene",SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("MiniGame_FlapyBirdScene");
         }
+        if (Input.GetKey(KeyCode.T))
+        {
+            
+        }
 
     }
     private void OnTriggerEnter2D(Collider2D other)
