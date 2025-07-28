@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TheStack : MonoBehaviour
 {
@@ -8,6 +10,16 @@ public class TheStack : MonoBehaviour
     private const float StackMovingSpeed = 5.0f;
     private const float BlockMovingSpeed = 3.5f;
     private const float ErrorMargin = 0.1f;
+
+
+    [Header("GameOverUI")]
+    [SerializeField] private GameObject gameOverPacel;
+    [SerializeField] private Button yesButton;
+    [SerializeField] private Button noButton;
+
+    private bool isGameOver = false;
+
+    
 
     public GameObject originBlock = null;
 
@@ -66,6 +78,11 @@ public class TheStack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            GameObject startText = GameObject.FindWithTag("GameStart");
+            if (startText != null) 
+            {
+                startText.SetActive(false);
+            }
             if (PlaceBlock())
             {
                 Spawn_Block();
@@ -75,6 +92,7 @@ public class TheStack : MonoBehaviour
                 // 게임 오버
                 Debug.Log("GameOver");
                 UpdateScore();
+                GameOver();
             }
         }
 
@@ -297,4 +315,28 @@ public class TheStack : MonoBehaviour
             PlayerPrefs.SetInt(BestComboKey, bestCombo);
         }
     }
+    void RestartGame() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    void CloseGame()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+    void GameOver()
+    {
+        Debug.Log("GameOver!");
+        UpdateScore();
+        isGameOver = true;
+
+        gameOverPacel.SetActive(true); 
+
+        yesButton.onClick.RemoveAllListeners();
+        noButton.onClick.RemoveAllListeners();
+
+        yesButton.onClick.AddListener(RestartGame);
+        noButton.onClick.AddListener(CloseGame);
+    }
+
+   
 }
