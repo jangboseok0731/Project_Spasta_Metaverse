@@ -140,6 +140,7 @@ public class TheStack : MonoBehaviour
 
         isMovingX = !isMovingX;
         UpdateScoreUI();
+        UpdateScore();
         return true;
     }
 
@@ -311,7 +312,6 @@ public class TheStack : MonoBehaviour
     }
     void UpdateScoreUI()
     {
-        
         if(scoreText != null)
         {
             scoreText.text = "Score: " + stackCount.ToString();
@@ -328,11 +328,12 @@ public class TheStack : MonoBehaviour
 
             PlayerPrefs.SetInt(BestScoreKey, bestScore);
             PlayerPrefs.SetInt(BestComboKey, bestCombo);
-            if(BestscoreText != null)
-            {
-                BestscoreText.text = bestScore.ToString();
-            }
+    
             
+        }
+        if (BestscoreText != null)
+        {
+            BestscoreText.text = "Best Score: " + bestScore.ToString();
         }
     }
     void RestartGame() 
