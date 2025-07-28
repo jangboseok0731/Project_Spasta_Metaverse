@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class TheStack : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class TheStack : MonoBehaviour
     [SerializeField] private GameObject gameOverPacel;
     [SerializeField] private Button yesButton;
     [SerializeField] private Button noButton;
+
+    
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text BestscoreText;
 
     private bool isGameOver = false;
 
@@ -71,6 +76,7 @@ public class TheStack : MonoBehaviour
         prevBlockPosition = Vector3.down;
         Spawn_Block();
         Spawn_Block();
+        UpdateScoreUI();
 
     }
 
@@ -133,6 +139,7 @@ public class TheStack : MonoBehaviour
         lastBlock = newTrans;
 
         isMovingX = !isMovingX;
+        UpdateScoreUI();
         return true;
     }
 
@@ -302,6 +309,14 @@ public class TheStack : MonoBehaviour
                 (stackBounds.y > BoundSize) ? BoundSize : stackBounds.y;
         }
     }
+    void UpdateScoreUI()
+    {
+        
+        if(scoreText != null)
+        {
+            scoreText.text = "Score: " + stackCount.ToString();
+        }
+    }
 
     void UpdateScore()
     {
@@ -313,6 +328,11 @@ public class TheStack : MonoBehaviour
 
             PlayerPrefs.SetInt(BestScoreKey, bestScore);
             PlayerPrefs.SetInt(BestComboKey, bestCombo);
+            if(BestscoreText != null)
+            {
+                BestscoreText.text = bestScore.ToString();
+            }
+            
         }
     }
     void RestartGame() 
