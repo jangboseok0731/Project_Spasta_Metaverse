@@ -20,7 +20,8 @@ public class InteractionTrigger : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.T))
         {
-            
+            PlayerPrefs.SetString("MainScene", SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("MiniGame_TheSlackScene");
         }
 
     }

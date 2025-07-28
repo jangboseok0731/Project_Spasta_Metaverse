@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     //움직임 제어 변수
     public float moveSpeed = 4f;
+    public float jumpMoveSpeed = 7f;
     public float jumpForce = 5f;
 
     private Rigidbody2D rigidbody;
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             moveY = -1f;
 
+
         rigidbody.velocity = new Vector2(moveX * moveSpeed, moveY *moveSpeed);
         HandleAnimation(moveX,moveY);
 
@@ -68,10 +70,14 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("아 여긴 문제 없다고~");
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
+            animator.SetTrigger("IsJumpTrigger");
+            
         }
+
 
     }
     void OnDrawGizmosSelected()
@@ -85,11 +91,20 @@ public class PlayerController : MonoBehaviour
     {
         float speed = new Vector2(moveX, moveY).magnitude;
         animator.SetFloat("SpeedFloat", speed);
+        if (moveX > 0) 
+        {
+            spriteObject.localScale = new Vector3(3,3,3);
+        }
+        else if (moveX < 0) 
+        {
+            spriteObject.localScale = new Vector3(-3,3,3);
+        }
+        
         
     }
     public void PlayJumpAnimation()
     {
-        animator.SetTrigger("Jump");
+        animator.SetTrigger("IsJumpTrigger");
     }
     public void PlayerAttackAnimation()
     {
